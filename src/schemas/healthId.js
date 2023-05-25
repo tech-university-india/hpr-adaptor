@@ -1,7 +1,9 @@
 const joi = require('joi');
 
+const emptyBody = joi.object({});
+
 const generateAadhaarOTPSchema = joi.object({
-    aadhaar: joi.string().length(12).required()
+    aadhaar: joi.string().required()
 });
 
 const verifyAadhaarOTPSchema = joi.object({
@@ -147,5 +149,6 @@ module.exports = {
     mobileOtpverifySchema,
     checkHPRExistsSchema,
     createHpiIdWithPreVreifiedSchema,
-    RegisterToHealthProfessionalRepoSchema
+    RegisterToHealthProfessionalRepoSchema,
+    emptyBody
 }

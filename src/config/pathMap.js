@@ -5,7 +5,9 @@ const {generateAadhaarOTPSchema,
     mobileOtpverifySchema,
     checkHPRExistsSchema,
     createHpiIdWithPreVreifiedSchema,
-    RegisterToHealthProfessionalRepoSchema} = require('../schemas/healthId');
+    RegisterToHealthProfessionalRepoSchema,
+    emptyBody
+} = require('../schemas/healthId');
 
 const pathMap = {   
     "/v2/registration/aadhaar/generateOtp": generateAadhaarOTPSchema,
@@ -16,7 +18,7 @@ const pathMap = {
     "/v2/registration/aadhaar/checkHpIdAccountExist": checkHPRExistsSchema,
     "/v1/registration/aadhaar/createHprIdWithPreVerified": createHpiIdWithPreVreifiedSchema,
     "/v1/doctors/register-professional": RegisterToHealthProfessionalRepoSchema,
-    // "/v1/auth/cert": getKeySchema,
+    "/v1/auth/cert": emptyBody,
 }
 
 module.exports = pathMap;
