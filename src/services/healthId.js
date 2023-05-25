@@ -13,7 +13,7 @@ const healthId = async (path, method, headers, body) => {
       requestHeaders[header] = headers[header];
     }
   });
-  const response = await fetch(`${process.env.HEALTH_ID_URL}${path}`, {
+  const response = await fetch(`${process.env.HPR_ID_URL}${path}`, {
     method,
     headers: {
       Authorization: `Bearer ${accessToken}`,
