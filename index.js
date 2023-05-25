@@ -1,14 +1,16 @@
-const express = require('express')
+require('dotenv').config();
+const express = require('express');
+const abdm = require('./src/controllers/abdm');
+const requestValidator = require('./src/middleware/joi');
 
-const app = express()
+const app = express();
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.text());
+app.use(requestValidator);
 
-app.get('/', (req, res) => {
-	res.send('welcome to health professional service adaptor')
-})
+const PORT = process.env.PORT || 9010;
 
-app.listen(3000, () => {
-	console.log('Example app listening on port 3000!')
-})
+app.use('*', abdm);
+
+app.listen(PORT, () => console.log(`Started on port ${PORT}`));
