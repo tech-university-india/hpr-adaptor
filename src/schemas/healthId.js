@@ -20,7 +20,7 @@ const mobileAuthSchema = joi.object({
 });
 
 const generateMobileOTPSchema = joi.object({
-    mobileNumber: joi.string().length(10).required(),
+    mobile: joi.string().length(10).required(),
     txnId: joi.string().required()
 });
 
