@@ -24,6 +24,7 @@ const getToken = async () => {
     },
     true
   );
+  console.log('accessToken', accessToken);
   return accessToken;
 };
 
