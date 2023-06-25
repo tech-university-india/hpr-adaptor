@@ -1,3 +1,3 @@
-const requiredHeaders = ['x-token', 't-token', 'accept', 'content-type'];
+const requiredHeaders = ['x-token', 't-token', 'accept', 'content-type','X-Token'];
 
 module.exports = requiredHeaders;

@@ -3,86 +3,86 @@ const joi = require('joi');
 const emptyBody = joi.object({});
 
 const generateAadhaarOTPSchema = joi.object({
-    aadhaar: joi.string().required()
+    aadhaar: joi.string() 
 });
 
 const verifyAadhaarOTPSchema = joi.object({
-    domainName: joi.string().required(),
-    idType: joi.string().required(),
-    otp: joi.string().required(),
+    domainName: joi.string() ,
+    idType: joi.string() ,
+    otp: joi.string() ,
     restrictions: joi.string().allow(''),
-    txnId: joi.string().required()
+    txnId: joi.string() 
 });
 
 const mobileAuthSchema = joi.object({
-    mobileNumber: joi.string().length(10).required(),
-    txnId: joi.string().required()
+    mobileNumber: joi.string().length(10) ,
+    txnId: joi.string() 
 });
 
 const generateMobileOTPSchema = joi.object({
-    mobileNumber: joi.string().length(10).required(),
-    txnId: joi.string().required()
+    mobile: joi.string().length(10) ,
+    txnId: joi.string() 
 });
 
 const mobileOtpverifySchema = joi.object({
-    txnId: joi.string().required(),
-    otp: joi.string().required()
+    txnId: joi.string() ,
+    otp: joi.string() 
 });
 
 const checkHPRExistsSchema = joi.object({
-    txnId: joi.string().required()
+    txnId: joi.string() 
 });
 
 const createHpiIdWithPreVreifiedSchema = joi.object({
-    domainName: joi.string().required(),
-    email: joi.string().email().required(),
-    firstName: joi.string().required(),
-    hprId: joi.string().required(),
-    idType: joi.string().required(),
-    lastName: joi.string().required(),
+    domainName: joi.string() ,
+    email: joi.string().email() ,
+    firstName: joi.string() ,
+    hprId: joi.string() ,
+    idType: joi.string() ,
+    lastName: joi.string() ,
     middleName: joi.string().allow(''),
-    password: joi.string().required(),
-    txnId: joi.string().required(),
+    password: joi.string() ,
+    txnId: joi.string() ,
 });
 
 const RegisterToHealthProfessionalRepoSchema = joi.object({
-    hprToken: joi.string().required(),
+    hprToken: joi.string() ,
     practitioner: joi.object({
       profilePhoto: joi.string().allow(''),
-      healthProfessionalType: joi.string().valid('doctor').required(),
+      healthProfessionalType: joi.string().valid('doctor') ,
       officialMobileCode: joi.string().allow(''),
-      officialMobile: joi.string().pattern(/^[0-9]{10}$/).required(),
+      officialMobile: joi.string().pattern(/^[0-9]{10}$/) ,
       officialMobileStatus: joi.string().allow(''),
       officialEmail: joi.string().allow(''),
       officialEmailStatus: joi.string().allow(''),
       visibleProfilePicture: joi.string().allow(''),
       personalInformation: joi.object({
-        salutation: joi.string().required(),
-        firstName: joi.string().required(),
+        salutation: joi.string() ,
+        firstName: joi.string() ,
         middleName: joi.string().allow(''),
-        lastName: joi.string().required(),
-        fatherName: joi.string().required(),
-        motherName: joi.string().required(),
+        lastName: joi.string() ,
+        fatherName: joi.string() ,
+        motherName: joi.string() ,
         spouseName: joi.string().allow(''),
-        nationality: joi.string().required(),
-        placeOfBirthState: joi.string().required(),
+        nationality: joi.string() ,
+        placeOfBirthState: joi.string() ,
         district: joi.string().allow(''),
         subDistrict: joi.string().allow(''),
         city: joi.string().allow(''),
-        languagesSpoken: joi.string().required()
-      }).required(),
-      addressAsPerKYC: joi.string().required(),
+        languagesSpoken: joi.string() 
+      }),
+      addressAsPerKYC: joi.string() ,
       communicationAddress: joi.object({
-        isCommunicationAddressAsPerKYC: joi.string().required(),
-        address: joi.string().required(),
-        name: joi.string().required(),
-        country: joi.string().required(),
-        state: joi.string().required(),
+        isCommunicationAddressAsPerKYC: joi.string() ,
+        address: joi.string() ,
+        name: joi.string() ,
+        country: joi.string() ,
+        state: joi.string() ,
         district: joi.string().allow(''),
         subDistrict: joi.string().allow(''),
         city: joi.string().allow(''),
-        postalCode: joi.number().required()
-      }).required(),
+        postalCode: joi.number() 
+      }) ,
       contactInformation: joi.object({
         publicMobileNumber: joi.string().allow(''),
         publicMobileNumberCode: joi.string().allow(''),
@@ -91,53 +91,53 @@ const RegisterToHealthProfessionalRepoSchema = joi.object({
         landLineNumberCode: joi.string().allow(''),
         publicEmail: joi.string().allow(''),
         publicEmailStatus: joi.string().allow('')
-      }).required(),
+      }) ,
       registrationAcademic: joi.object({
-        category: joi.string().required(),
+        category: joi.string() ,
         registrationData: joi.array().items(joi.object({
-          registeredWithCouncil: joi.string().required(),
-          registrationNumber: joi.string().required(),
+          registeredWithCouncil: joi.string() ,
+          registrationNumber: joi.string() ,
           registrationCertificate: joi.string().allow(''),
-          isNameDifferentInCertificate: joi.string().required(),
+          isNameDifferentInCertificate: joi.string() ,
           proofOfNameChangeCertificate: joi.string().allow(''),
-          categoryId: joi.string().required(),
+          categoryId: joi.string() ,
           qualifications: joi.array().items(joi.object({
-            nameOfDegreeOrDiplomaObtained: joi.string().required(),
-            country: joi.string().required(),
-            state: joi.string().required(),
-            college: joi.string().required(),
-            university: joi.string().required(),
+            nameOfDegreeOrDiplomaObtained: joi.string() ,
+            country: joi.string() ,
+            state: joi.string() ,
+            college: joi.string() ,
+            university: joi.string() ,
             monthOfAwardingDegreeDiploma: joi.string().allow(''),
-            yearOfAwardingDegreeDiploma: joi.string().required(),
+            yearOfAwardingDegreeDiploma: joi.string() ,
             degreeCertificate: joi.string().allow(''),
-            isNameDifferentInCertificate: joi.string().required(),
+            isNameDifferentInCertificate: joi.string() ,
             proofOfNameChangeCertificate: joi.string().allow('')
-          })).required()
-        })).required()
-      }).required(),
+          })) 
+        })) 
+      }) ,
       specialities: joi.array().items(joi.object({
-        speciality: joi.string().required(),
+        speciality: joi.string() ,
         subSpecialities: joi.string().allow('')
-      })).required(),
+      })) ,
       currentWorkDetails: joi.object({
-        currentlyWorking: joi.string().required(),
-        purposeOfWork: joi.string().required(),
-        chooseWorkStatus: joi.string().required(),
+        currentlyWorking: joi.string() ,
+        purposeOfWork: joi.string() ,
+        chooseWorkStatus: joi.string() ,
         reasonForNotWorking: joi.string().allow(''),
         certificateAttachment: joi.string().allow(''),
         facilityDeclarationData: joi.object({
-          facilityId: joi.string().required(),
-          facilityName: joi.string().required(),
+          facilityId: joi.string() ,
+          facilityName: joi.string() ,
           facilityAddress: joi.string().allow(''),
           facilityPincode: joi.string().allow(''),
           state: joi.string().allow(''),
           district: joi.string().allow(''),
-          facilityType: joi.string().required(),
-          facilityDepartment: joi.string().required(),
-          facilityDesignation: joi.string().required()
-        }).required()
-      }).required()
-    }).required()
+          facilityType: joi.string() ,
+          facilityDepartment: joi.string() ,
+          facilityDesignation: joi.string() 
+        }) 
+      }) 
+    }) 
   });
 
 

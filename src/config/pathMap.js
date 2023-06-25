@@ -19,6 +19,7 @@ const pathMap = {
     "/v1/registration/aadhaar/createHprIdWithPreVerified": createHpiIdWithPreVreifiedSchema,
     "/v1/doctors/register-professional": RegisterToHealthProfessionalRepoSchema,
     "/v1/auth/cert": emptyBody,
+    "/v2/account/profile": emptyBody,
 }
 
 module.exports = pathMap;
